@@ -1,0 +1,15 @@
+{
+  "name": "spotify-video",
+  "version": "1.0.0",
+  "description": "spotify videos",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Clement Leung <clemsquared@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
