@@ -1,5 +1,9 @@
-'use strict';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Playlist from './components/playlist';
 
-var component = require('./component.js')
+main();
 
-document.body.appendChild(component());
+function main() {
+    ReactDOM.render(<Playlist />, document.getElementById('app'));
+}
