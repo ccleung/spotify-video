@@ -13,7 +13,7 @@ export default class Playlist extends React.Component {
 		var trackNodes = items.map(function(item) {
 			var track = item.track;
 			return (
-				<Track name={track.name} key={track.id} />
+				<Track artist={track.artists[0].name} name={track.name} key={track.id} />
 			)
 		});
 		return (

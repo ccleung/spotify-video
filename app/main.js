@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Playlist from './components/playlist';
+import App from './components/app';
 
 main();
 
 function main() {
-    ReactDOM.render(<Playlist />, document.getElementById('app'));
+    ReactDOM.render(<App />, document.getElementById('app'));
 }
