@@ -1,19 +1,14 @@
 import React from 'react';
-import YoutubePlayer from './youtube-player'
-import Playlist from './playlist'
+import SelectedYouTubePlayer from '../containers/selected-youtube-player'
+import SelectablePlaylist from '../containers/selectable-playlist'
 
 export default class App extends React.Component {
-		constructor(props) {
-		super(props);
-		this.state = {
-		}
-	}
-	render() {
-		return (
-			<div>
-				<YoutubePlayer />
-				<Playlist />
-			</div>
-		)
-	}
+  render() {
+    return (
+      <div>
+        <SelectedYouTubePlayer />
+        <SelectablePlaylist />
+      </div>
+    )
+  }
 }
