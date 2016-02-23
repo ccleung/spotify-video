@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import { playTrack } from '../actions'
+import { playTrack, displayTrack } from '../actions'
 import Playlist from '../components/playlist'
 
 const mapStateToProps = (state) => {
   return {
-    data: state.data
+    tracks: state.tracks
   }
 }
 
@@ -12,6 +12,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onTrackClick: (id) => {
       dispatch(playTrack(id))
+      // dispatch(displayTrack(id))
     }
   }
 }

@@ -3,14 +3,13 @@ import Track from './track'
 
 export default class Playlist extends React.Component {
   render() {
-    var items = this.props.data.items;
-    var trackNodes = items.map((item) => {
-      var track = item.track;
+    var tracks = this.props.tracks;
+    var trackNodes = tracks.map((track) => {
       return (
         <Track key={track.id}
                artist={track.artists[0].name}
                name={track.name}
-               onClick={() => this.props.onTrackClick(Math.floor((Math.random() * 2) + 1) % 2 == 0 ? 'Zaek8Va_hFA' : 'hLQl3WQQoQ0')} />
+               onClick={() => this.props.onTrackClick(track.id)} />
       )
     });
     return (

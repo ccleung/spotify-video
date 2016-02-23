@@ -1,9 +1,19 @@
 import { connect } from 'react-redux'
 import YouTubePlayer from '../components/youtube-player'
 
+const getVideoIdToPlay = (tracks, trackId) => {
+	var selectedTrack = tracks.find((element, index, array) => {
+		return element.id == trackId;
+	})
+	if (selectedTrack === undefined) {
+		return '';
+	}
+	return selectedTrack.videoId;
+}
+
 const mapStateToProps = (state) => {
   return {
-    playTrack: state.playTrack
+    playTrack: getVideoIdToPlay(state.tracks, state.selectedaTrackId)
   }
 }
 

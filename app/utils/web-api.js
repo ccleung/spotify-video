@@ -18,7 +18,6 @@ export const getYouTubeVideoID = (query) => {
 	  data: params,
 	  dataType: 'json',
 	  success: (data) => {
-	  	debugger;
 	    return data;
 	  },
 	  error: (xhr, status, err) => {
