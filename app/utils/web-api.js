@@ -3,14 +3,12 @@ import $ from 'jquery';
 const apiKey = "AIzaSyB3iMwuO5nwMtwVU9pzrcIhWeY_c0XLPpg";
 
 export const getYouTubeVideoID = (query) => {
-	var query = escape(query);
 	var params = {
 		key: apiKey,
 		type: 'video',
 		part: 'id',
 		maxResults: 1,
-		q: query,
-
+		q: query
 	};
 
 	return $.ajax({

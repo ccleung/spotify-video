@@ -9,19 +9,15 @@ const initTracks = () => {
 	return tracks;
 }
 
-const generateVideoId = () => {
-	return Math.floor((Math.random() * 2) + 1) % 2 == 0 ? 'Zaek8Va_hFA' : 'hLQl3WQQoQ0';
-}
-
 const track = (state, action) => {
   switch(action.type) {
-    case 'PLAY_TRACK':
-    	if (state.id !== action.id) {
+    case 'RECEIVE_VIDEO_ID':
+    	if (state.id !== action.trackId) {
     		return state;
     	}
 
-      return Object.assign({}, state, {
-      	videoId: state.videoId ? state.videoId : generateVideoId()
+    	return Object.assign({}, state, {
+      	videoId: action.videoId
       })
     default:
       return state
@@ -30,7 +26,7 @@ const track = (state, action) => {
 
 const tracks = (state = initTracks(), action) => {
 	switch (action.type) {
-		case 'PLAY_TRACK':
+		case 'RECEIVE_VIDEO_ID':
 			return state.map((trackState) => {
 				return track(trackState, action)
 			})

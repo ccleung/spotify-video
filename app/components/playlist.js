@@ -9,7 +9,7 @@ export default class Playlist extends React.Component {
         <Track key={track.id}
                artist={track.artists[0].name}
                name={track.name}
-               onClick={() => this.props.onTrackClick(track.id)} />
+               onClick={() => this.props.onTrackClick(track.id, track.name + ' ' + track.artists[0].name)} />
       )
     });
     return (

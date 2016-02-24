@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { playTrack, displayTrack } from '../actions'
+import { playTrack, fetchVideoId } from '../actions'
 import Playlist from '../components/playlist'
 
 const mapStateToProps = (state) => {
@@ -10,9 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onTrackClick: (id) => {
-      dispatch(playTrack(id))
-      // dispatch(displayTrack(id))
+    onTrackClick: (id, searchQuery) => {
+      dispatch(fetchVideoId(id, searchQuery))
     }
   }
 }

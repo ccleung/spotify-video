@@ -1,7 +1,4 @@
-export const REQUEST_VIDEO = 'REQUEST_VIDEO_ID'
-export const RECEIVE_VIDEO = 'RECEIVE_POSTS'
-// export const SELECT_REDDIT = 'SELECT_REDDIT'
-export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT'
+import { getYouTubeVideoID } from '../utils/web-api';
 
 export const playTrack = (id) => {
   return {
@@ -10,15 +7,26 @@ export const playTrack = (id) => {
   }
 }
 
-export const initData = () => {
-  return {
-    type: 'INITIALIZE_DATA'
-  }
-}
-
-// export const displayTrack = (id) => {
+// export const requestVideoId = (searchQuery) => {
 // 	return {
-// 		type: 'DISPLAY_TRACK',
-// 		id
+// 		type: 'REQUEST_VIDEO_ID',
+// 		searchQuery
 // 	}
 // }
+
+export const fetchVideoId = (trackId, searchQuery) => {
+	return (dispatch) => {
+		dispatch(playTrack(trackId));
+		return getYouTubeVideoID(searchQuery)
+			.then((data) => dispatch(receivedVideoId(trackId, data)))
+	}
+}
+
+export const receivedVideoId = (trackId, data) => {
+	return {
+		type: 'RECEIVE_VIDEO_ID',
+		videoId: data.items[0].id.videoId,
+		trackId: trackId
+	}
+}
+
