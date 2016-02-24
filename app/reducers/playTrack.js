@@ -1,23 +1,23 @@
 import ResponseData from '../data/response-data'
 
 const initTracks = () => {
-	var items = ResponseData.items;
-	var tracks = items.map((item) => {
-		return Object.assign({}, item.track, { videoId: null });
-	});
+  var items = ResponseData.items;
+  var tracks = items.map((item) => {
+    return Object.assign({}, item.track, { videoId: null });
+  });
 
-	return tracks;
+  return tracks;
 }
 
 const track = (state, action) => {
   switch(action.type) {
     case 'RECEIVE_VIDEO_ID':
-    	if (state.id !== action.trackId) {
-    		return state;
-    	}
+      if (state.id !== action.trackId) {
+        return state;
+      }
 
-    	return Object.assign({}, state, {
-      	videoId: action.videoId
+      return Object.assign({}, state, {
+        videoId: action.videoId
       })
     default:
       return state
@@ -25,14 +25,14 @@ const track = (state, action) => {
 }
 
 const tracks = (state = initTracks(), action) => {
-	switch (action.type) {
-		case 'RECEIVE_VIDEO_ID':
-			return state.map((trackState) => {
-				return track(trackState, action)
-			})
-		default:
-			return state
-	}
+  switch (action.type) {
+    case 'RECEIVE_VIDEO_ID':
+      return state.map((trackState) => {
+        return track(trackState, action)
+      })
+    default:
+      return state
+  }
 }
 
 export default tracks

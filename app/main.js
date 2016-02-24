@@ -8,11 +8,6 @@ import { getYouTubeVideoID } from './utils/web-api';
 main();
 
 function main() {
-	// var promise = getYouTubeVideoID("hello world");
-	// promise.then((data) => {
-	// 	console.log(data);
-	// });
-
   const store = configureStore();
   ReactDOM.render(
     <Provider store={store}>
