@@ -4,8 +4,9 @@
   "description": "spotify videos",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
+    "build:webpack": "NODE_ENV=production webpack --colors --config ./webpack/webpack.config.dev.js",
+    "build": "npm run build:webpack",
+    "dev": "NODE_ENV=development node server/index.js"
   },
   "author": "Clement Leung <clemsquared@gmail.com>",
   "license": "ISC",
@@ -16,10 +17,13 @@
     "babel-preset-react": "^6.5.0",
     "redux-logger": "^2.6.0",
     "webpack": "^1.12.13",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.9.1"
   },
   "dependencies": {
     "babel-preset-react": "^6.5.0",
+    "express": "^4.13.4",
     "jquery": "^2.2.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
