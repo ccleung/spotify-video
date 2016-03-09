@@ -24,6 +24,9 @@ coverage
 build/Release
 dist
 
+# confg
+server/config/spotify-config.js
+
 # Dependency directory
 node_modules
 
