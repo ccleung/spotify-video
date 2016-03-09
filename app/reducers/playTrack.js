@@ -20,18 +20,20 @@ const track = (state, action) => {
         videoId: action.videoId
       })
     default:
-      return state
+      return state;
   }
 }
 
-const tracks = (state = initTracks(), action) => {
+const tracks = (state = [], action) => {
   switch (action.type) {
     case 'RECEIVE_VIDEO_ID':
       return state.map((trackState) => {
-        return track(trackState, action)
+        return track(trackState, action);
       })
+    case 'RECEIVE_PLAYLIST':
+      return action.playlist;
     default:
-      return state
+      return state;
   }
 }
 

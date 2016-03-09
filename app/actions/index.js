@@ -1,4 +1,4 @@
-import { getYouTubeVideoID } from '../utils/web-api';
+import { getYouTubeVideoID, getPlaylist } from '../utils/web-api';
 
 export const playTrack = (id) => {
   return {
@@ -7,12 +7,27 @@ export const playTrack = (id) => {
   }
 }
 
-// export const requestVideoId = (searchQuery) => {
-//  return {
-//    type: 'REQUEST_VIDEO_ID',
-//    searchQuery
-//  }
-// }
+export const fetchPlaylist = () => {
+  return (dispatch) => {
+    return getPlaylist()
+      .then((data) => dispatch(receivedPlaylist(data)))
+  }
+}
+
+const parsePlaylist = (data) => {
+  var items = data.items;
+  var tracks = items.map((item) => {
+    return Object.assign({}, item.track, { videoId: null });
+  });
+  return tracks;
+}
+
+export const receivedPlaylist = (data) => {
+  return {
+    type: 'RECEIVE_PLAYLIST',
+    playlist: parsePlaylist(data)
+  }
+}
 
 export const fetchVideoId = (trackId, searchQuery) => {
   return (dispatch) => {
