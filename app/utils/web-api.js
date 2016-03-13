@@ -1,19 +1,13 @@
 import { getParameterByName } from './utils'
 import $ from 'jquery';
 
-const apiKey = "AIzaSyB3iMwuO5nwMtwVU9pzrcIhWeY_c0XLPpg";
-
 export const getYouTubeVideoID = (query) => {
   var params = {
-    key: apiKey,
-    type: 'video',
-    part: 'id',
-    maxResults: 1,
-    q: query
+    track_name: query
   };
 
   return $.ajax({
-    url: "https://www.googleapis.com/youtube/v3/search",
+    url: "http://localhost:8888/tracks/video_id",
     data: params,
     dataType: 'json',
     success: (data) => {
@@ -27,18 +21,13 @@ export const getYouTubeVideoID = (query) => {
 
 export const getPlaylist = () => {
   var params = {
-    limit: 20
-  }
-
-  var accessToken = getParameterByName('access_token');
-  var headers = {
-    'Authorization': 'Bearer ' + accessToken
+    limit: 20,
+    access_token: getParameterByName('access_token')
   }
 
   return $.ajax({
-    url: "https://api.spotify.com/v1/me/tracks",
+    url: "http://localhost:8888/tracks",
     data: params,
-    headers: headers,
     dataType: 'json',
     success: (data) => {
       return data;

@@ -26,6 +26,7 @@ dist
 
 # confg
 server/config/spotify-config.js
+server/config/youtube-config.js
 
 # Dependency directory
 node_modules

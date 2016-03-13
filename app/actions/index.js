@@ -25,7 +25,7 @@ const parsePlaylist = (data) => {
 export const receivedPlaylist = (data) => {
   return {
     type: 'RECEIVE_PLAYLIST',
-    playlist: parsePlaylist(data)
+    playlist: data
   }
 }
 
@@ -40,7 +40,7 @@ export const fetchVideoId = (trackId, searchQuery) => {
 export const receivedVideoId = (trackId, data) => {
   return {
     type: 'RECEIVE_VIDEO_ID',
-    videoId: data.items[0].id.videoId,
+    videoId: data.videoId,
     trackId: trackId
   }
 }

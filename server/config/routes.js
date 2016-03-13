@@ -3,6 +3,7 @@
  */
 var path = require('path');
 var users = require('../controllers/users')
+var tracks = require('../controllers/tracks')
 
 
 module.exports = function(app) {
@@ -12,6 +13,14 @@ module.exports = function(app) {
 
   app.get('/callback', function(req, res) {
     users.auth(req, res);
+  });
+
+  app.get('/tracks', function(req, res) {
+    tracks.all(req, res);
+  });
+
+  app.get('/tracks/video_id', function(req, res) {
+    tracks.getVideoId(req, res);
   });
 
   // This is where the magic happens. We take the locals data we have already

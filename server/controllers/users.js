@@ -38,16 +38,18 @@ exports.auth = function(req, res) {
       var access_token = body.access_token;
       var refresh_token = body.refresh_token;
 
-      var options = {
-        url: 'https://api.spotify.com/v1/me/tracks',
-        headers: { 'Authorization': 'Bearer ' + access_token },
-        json: true
-      };
+      // for debuggering purposes
+      // TODO: store access/refresh token?
+      // var options = {
+      //   url: 'https://api.spotify.com/v1/me/tracks',
+      //   headers: { 'Authorization': 'Bearer ' + access_token },
+      //   json: true
+      // };
 
-      // use the access token to access the Spotify Web API
-      request.get(options, function(error, response, body) {
-        console.log(body);
-      });
+      // // use the access token to access the Spotify Web API
+      // request.get(options, function(error, response, body) {
+      //   console.log(body);
+      // });
 
       // we can also pass the token to the browser to make requests from there
       res.redirect('/?' +
