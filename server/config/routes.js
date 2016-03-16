@@ -2,24 +2,27 @@
  * Routes for express app
  */
 var path = require('path');
-var users = require('../controllers/users')
-var tracks = require('../controllers/tracks')
+var users = require('../controllers/users');
+var tracks = require('../controllers/tracks');
+var express = require('express');
+var userRouter = express.Router();
+var apiRouter = express.Router();
 
 
 module.exports = function(app) {
-  app.get('/login', function(req, res) {
+  userRouter.get('/login', function(req, res) {
     users.login(req, res);
   });
 
-  app.get('/callback', function(req, res) {
+  userRouter.get('/callback', function(req, res) {
     users.auth(req, res);
   });
 
-  app.get('/tracks', function(req, res) {
+  apiRouter.get('/tracks', function(req, res) {
     tracks.all(req, res);
   });
 
-  app.get('/tracks/video_id', function(req, res) {
+  apiRouter.get('/tracks/video_id', function(req, res) {
     tracks.getVideoId(req, res);
   });
 
@@ -29,6 +32,9 @@ module.exports = function(app) {
   // app.get('*', function (req, res, next) {
   //   App.default(req, res);
   // });
+
+  app.use('/users', userRouter);
+  app.use('/api', apiRouter);
 
   app.get('*', function(req, res) {
     // __dirname is the local to this directly

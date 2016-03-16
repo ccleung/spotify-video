@@ -7,7 +7,7 @@ export const getYouTubeVideoID = (query) => {
   };
 
   return $.ajax({
-    url: "http://localhost:8888/tracks/video_id",
+    url: "http://localhost:8888/api/tracks/video_id",
     data: params,
     dataType: 'json',
     success: (data) => {
@@ -26,7 +26,7 @@ export const getPlaylist = () => {
   }
 
   return $.ajax({
-    url: "http://localhost:8888/tracks",
+    url: "http://localhost:8888/api/tracks",
     data: params,
     dataType: 'json',
     success: (data) => {
