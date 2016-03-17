@@ -45,3 +45,8 @@ export const receivedVideoId = (trackId, data) => {
   }
 }
 
+export const logout = () => {
+  return {
+    type: 'LOGOUT'
+  }
+}

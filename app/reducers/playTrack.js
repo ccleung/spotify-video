@@ -32,6 +32,8 @@ const tracks = (state = [], action) => {
       })
     case 'RECEIVE_PLAYLIST':
       return action.playlist;
+    case 'LOGOUT':
+      return [];
     default:
       return state;
   }

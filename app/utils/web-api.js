@@ -1,4 +1,4 @@
-import { getParameterByName } from './utils'
+import Auth from './auth'
 import $ from 'jquery';
 
 export const getYouTubeVideoID = (query) => {
@@ -22,7 +22,7 @@ export const getYouTubeVideoID = (query) => {
 export const getPlaylist = () => {
   var params = {
     limit: 20,
-    access_token: getParameterByName('access_token')
+    access_token: Auth.getToken()
   }
 
   return $.ajax({

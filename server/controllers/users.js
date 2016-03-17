@@ -17,7 +17,6 @@ exports.login = function(req, res) {
 exports.auth = function(req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
-  debugger;
   var code = req.query.code || null;
   var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -38,25 +37,13 @@ exports.auth = function(req, res) {
       var access_token = body.access_token;
       var refresh_token = body.refresh_token;
 
-      // for debuggering purposes
-      // TODO: store access/refresh token?
-      // var options = {
-      //   url: 'https://api.spotify.com/v1/me/tracks',
-      //   headers: { 'Authorization': 'Bearer ' + access_token },
-      //   json: true
-      // };
-
-      // // use the access token to access the Spotify Web API
-      // request.get(options, function(error, response, body) {
-      //   console.log(body);
-      // });
-
-      // we can also pass the token to the browser to make requests from there
-      res.redirect('/?' +
-        querystring.stringify({
-          access_token: access_token,
-          refresh_token: refresh_token
-        })
+      // TODO: store refresh token on server side
+      res.cookie('auth_token', access_token);
+      res.redirect('/'
+        // querystring.stringify({
+        //   access_token: access_token,
+        //   refresh_token: refresh_token
+        // })
       );
     } else {
       res.redirect('/?' +
