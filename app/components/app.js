@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import SelectedYouTubePlayer from '../containers/selected-youtube-player'
 import SelectablePlaylist from '../containers/selectable-playlist'
+import styles from '../styles/app.css'
+import buttonStyles from '../styles/button.css'
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -10,9 +12,9 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.app}>
         <nav>
-          <a href="#" onClick={() => this.props.onLogoutClicked()}>Logout</a>
+          <a className={buttonStyles.button} href="#" onClick={() => this.props.onLogoutClicked()}>Logout</a>
         </nav>
         <SelectedYouTubePlayer />
         <SelectablePlaylist />

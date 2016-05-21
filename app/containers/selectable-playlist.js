@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { playTrack, fetchVideoId } from '../actions'
+import { fetchVideoId } from '../actions'
 import Playlist from '../components/playlist'
 
 const mapStateToProps = (state) => {

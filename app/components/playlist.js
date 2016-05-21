@@ -20,5 +20,5 @@ export default class Playlist extends React.Component {
   }
 }
 
-Playlist.propTypes = { data: React.PropTypes.object.isRequired }
 Playlist.propTypes = { onTrackClick: React.PropTypes.func.isRequired }
+Playlist.propTypes = { tracks: React.PropTypes.array.isRequired }
