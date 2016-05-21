@@ -1,3 +1,20 @@
 .app {
   font-family: Circular, Helvetica, Arial, sans-serif;
 }
+
+.navContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 10px;
+}
+
+.button {
+  composes: button from './button.css';
+}
+
+.appContentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

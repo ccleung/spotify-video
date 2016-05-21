@@ -1,5 +1,6 @@
 import React from 'react';
 import Track from './track'
+import styles from '../styles/playlist.css'
 
 export default class Playlist extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class Playlist extends React.Component {
       )
     });
     return (
-      <div className="playlist">
+      <div className={styles.container}>
         {trackNodes}
       </div>
     );
