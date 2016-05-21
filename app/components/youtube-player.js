@@ -5,12 +5,7 @@ export default class YouTubePlayer extends React.Component {
     var srcUrl = "https://www.youtube.com/embed/" + this.props.playTrack;
     return (
       <div>
-        <iframe width="560" 
-            height="315"
-            src={srcUrl}
-            frameborder="0" 
-            allowfullscreen>
-        </iframe>
+        <iframe width="640" height="360" src={srcUrl} frameBorder="0" allowFullScreen />
         <p>
           Current Video Id {this.props.playTrack}
         </p>
