@@ -1,13 +1,15 @@
 import Auth from './auth'
 import $ from 'jquery';
 
+const BASE_URL = process.env.NODE_ENV === 'production' ? 'http://spotifyvideo.herokuapp.com' : 'http://localhost:8888'
+
 export const getYouTubeVideoID = (query) => {
   var params = {
     track_name: query
   };
 
   return $.ajax({
-    url: "http://localhost:8888/api/tracks/video_id",
+    url: BASE_URL + "/api/tracks/video_id",
     data: params,
     dataType: 'json',
     success: (data) => {
@@ -26,7 +28,7 @@ export const getPlaylist = () => {
   }
 
   return $.ajax({
-    url: "http://localhost:8888/api/tracks",
+    url: BASE_URL + "/api/tracks",
     data: params,
     dataType: 'json',
     success: (data) => {
