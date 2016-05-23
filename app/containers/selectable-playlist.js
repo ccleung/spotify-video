@@ -4,7 +4,8 @@ import Playlist from '../components/playlist'
 
 const mapStateToProps = (state) => {
   return {
-    tracks: state.tracks
+    tracks: state.tracks,
+    selectedTrackId: state.selectedTrackId
   }
 }
 

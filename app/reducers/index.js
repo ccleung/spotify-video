@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import tracks from './playTrack'
 
-const selectedaTrackId = (state = '', action) => {
+const selectedTrackId = (state = '', action) => {
   switch(action.type) {
     case 'PLAY_TRACK':
       return action.id;
@@ -12,7 +12,7 @@ const selectedaTrackId = (state = '', action) => {
 
 const spotifyVideoReducers = combineReducers({
   tracks,
-  selectedaTrackId
+  selectedTrackId
 })
 
 export default spotifyVideoReducers

@@ -13,3 +13,11 @@
 .track:hover {
   background-color: #252323;
 }
+
+.track.selected {
+  background-color: #2F2D2D;
+}
+
+.track.selected:hover {
+  background-color: #252323;
+}

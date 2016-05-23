@@ -14,7 +14,7 @@ const getVideoIdToPlay = (tracks, trackId) => {
 
 const mapStateToProps = (state) => {
   return {
-    playTrack: getVideoIdToPlay(state.tracks, state.selectedaTrackId)
+    playTrack: getVideoIdToPlay(state.tracks, state.selectedTrackId)
   }
 }
 
