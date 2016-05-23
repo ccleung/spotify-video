@@ -1,3 +1,15 @@
 .track {
+  border-top: 1px solid #312E2E;
   font-weight: 300;
+  font-size: 14px;
+  line-height: 25px;
+  padding: 12px 10px;
+}
+
+.track:last-child {
+  border-bottom: 1px solid #312E2E;
+}
+
+.track:hover {
+  background-color: #252323;
 }
