@@ -1,7 +1,7 @@
-:global(body {
-  background-color: #191717;
-})
+:global
+body { background-color: #191717; }
 
+:local
 .app {
   font-family: Circular, Helvetica, Arial, sans-serif;
   color: #fff;
