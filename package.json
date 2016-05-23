@@ -9,8 +9,7 @@
     "build": "npm run clean && npm run build:webpack",
     "start": "node server/index.js",
     "dev": "NODE_ENV=development node server/index.js",
-    "debug": "NODE_ENV=development node debug server/index.js",
-    "postinstall": "npm run build"
+    "debug": "NODE_ENV=development node debug server/index.js"
   },
   "author": "Clement Leung <clemsquared@gmail.com>",
   "license": "ISC",
