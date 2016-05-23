@@ -1,13 +1,14 @@
 var express = require('express');
-var webpack = require('webpack');
-var config = require('../webpack.config.dev.js');
+var path = require('path');
 var app = express();
-var compiler = webpack(config);
 
 app.set('port', (process.env.PORT || 8888));
 
 var isDev = process.env.NODE_ENV === 'development';
 if (isDev) {
+  var webpack = require('webpack');
+  var config = require('../webpack.config.dev.js');
+  var compiler = webpack(config);
   app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
@@ -16,7 +17,7 @@ if (isDev) {
   app.use(require('webpack-hot-middleware')(compiler));
 }
 
-app.use('/public', express.static('public'));
+app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 require('./config/routes')(app);
 

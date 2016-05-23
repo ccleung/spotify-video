@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "start": "node server/index.js",
+    "start": "NODE_ENV=production node server/index.js",
     "dev": "NODE_ENV=development node server/index.js",
     "debug": "NODE_ENV=development node debug server/index.js"
   },
@@ -41,5 +41,9 @@
     "redux": "^3.3.1",
     "redux-thunk": "^1.0.3",
     "request": "^2.69.0"
+  },
+  "engines": {
+      "node": "5.6.0",
+      "npm": "3.6.0"
   }
 }
