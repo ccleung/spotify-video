@@ -4,15 +4,10 @@
   overflow-y: scroll;
 }
 
-@media only screen and (max-width: 768px) {
-  .container {
-      width: 100%;
-  }
-}
-
+/* for some reason iphone prefers max-device-width */
 @media only screen and (max-device-width: 768px) {
   .container {
-      width: 100%;
-      height: 100%;
+    width: 100%;
+    height: 500px;
   }
 }

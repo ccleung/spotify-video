@@ -10,8 +10,10 @@
   border-bottom: 1px solid #312E2E;
 }
 
-.track:hover {
-  background-color: #252323;
+@media only screen and (min-device-width: 768px) {
+  .track:hover {
+    background-color: #252323;
+  }
 }
 
 .track.selected {
