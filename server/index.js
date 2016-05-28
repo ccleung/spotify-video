@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var app = express();
+var cookieParser = require('cookie-parser')
 
 app.set('port', (process.env.PORT || 8888));
 
@@ -18,6 +19,7 @@ if (isDev) {
 }
 
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
+app.use(cookieParser());
 
 require('./config/routes')(app);
 
