@@ -1,4 +1,6 @@
 import { getYouTubeVideoID, getPlaylist } from '../utils/web-api';
+import { normalize, arrayOf } from 'normalizr';
+import { track } from '../normalizers/tracks';
 
 export const playTrack = (id) => {
   return {
@@ -9,23 +11,19 @@ export const playTrack = (id) => {
 
 export const fetchPlaylist = () => {
   return (dispatch) => {
-    return getPlaylist()
-      .then((data) => dispatch(receivedPlaylist(data)))
+    return getPlaylist().success((data) => {
+      var normalizedData = normalize(data, {
+        tracks: arrayOf(track)
+      });
+      dispatch(receivedPlaylist(normalizedData))
+    });
   }
 }
 
-const parsePlaylist = (data) => {
-  var items = data.items;
-  var tracks = items.map((item) => {
-    return Object.assign({}, item.track, { videoId: null });
-  });
-  return tracks;
-}
-
-export const receivedPlaylist = (data) => {
+export const receivedPlaylist = (normalizedData) => {
   return {
     type: 'RECEIVE_PLAYLIST',
-    playlist: data
+    playlist: normalizedData
   }
 }
 

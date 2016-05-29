@@ -1,39 +1,44 @@
 import ResponseData from '../data/response-data'
 
-const initTracks = () => {
-  var items = ResponseData.items;
-  var tracks = items.map((item) => {
-    return Object.assign({}, item.track, { videoId: null });
-  });
-
-  return tracks;
+const emptyTracks = {
+  result: { tracks: [] },
+  entities: { tracks: {} }
 }
 
-const track = (state, action) => {
-  switch(action.type) {
-    case 'RECEIVE_VIDEO_ID':
-      if (state.id !== action.trackId) {
-        return state;
-      }
+/*
+track state is normalized with normalizr:
+https://github.com/paularmstrong/normalizr
+e.g.,
 
-      return Object.assign({}, state, {
-        videoId: action.videoId
-      })
-    default:
-      return state;
+{
+  result: {
+    tracks: ['345RHjiEdIVedsxtiwGG7t', '2IjyFRCRn8x1bEquOM3vxg'...]
+  }
+  entities: {
+    tracks: {
+      '345RHjiEdIVedsxtiwGG7t': {
+        name: '',
+        artists: []
+      },
+      '2IjyFRCRn8x1bEquOM3vxg': {
+        name: '',
+        artists: []
+      }
+    }
   }
 }
-
-const tracks = (state = [], action) => {
+*/
+const tracks = (state = emptyTracks, action) => {
   switch (action.type) {
     case 'RECEIVE_VIDEO_ID':
-      return state.map((trackState) => {
-        return track(trackState, action);
-      })
+      // save the youtube videoId in the entity body of the corresponding trackId
+      var normalizedTracks = Object.assign({}, state);
+      normalizedTracks.entities.tracks[action.trackId].videoId = action.videoId;
+      return normalizedTracks;
     case 'RECEIVE_PLAYLIST':
       return action.playlist;
     case 'LOGOUT':
-      return [];
+      return emptyTracks;
     default:
       return state;
   }

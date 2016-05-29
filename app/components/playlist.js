@@ -4,8 +4,11 @@ import styles from '../styles/playlist.css'
 
 export default class Playlist extends React.Component {
   render() {
-    var tracks = this.props.tracks;
-    var trackNodes = tracks.map((track) => {
+    var normalizedTracks = this.props.tracks;
+    // translated to deal with normalized state values
+    // see playTrack reducer for more detail
+    var trackNodes = normalizedTracks.result.tracks.map((trackId) => {
+      var track = normalizedTracks.entities.tracks[trackId];
       var isSelected = this.isSelected(track, this.props.selectedTrackId)
       return (
         <Track key={track.id}

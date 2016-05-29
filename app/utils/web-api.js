@@ -31,9 +31,6 @@ export const getPlaylist = () => {
     url: BASE_URL + "/api/tracks",
     data: params,
     dataType: 'json',
-    success: (data) => {
-      return data;
-    },
     error: (xhr, status, err) => {
       console.error(status, err.toString());
     }

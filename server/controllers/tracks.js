@@ -4,10 +4,10 @@ var youtubeConfig = require('../config/youtube-config');
 
 const parseTracks = (data) => {
   var items = data.items;
-  var tracks = items.map((item) => {
+  var parsedTracks = items.map((item) => {
     return Object.assign({}, item.track, { videoId: null });
   });
-  return tracks;
+  return { tracks: parsedTracks };
 }
 
 const parseYoutubeSearchResults = (data) => {
