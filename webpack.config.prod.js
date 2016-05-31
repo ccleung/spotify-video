@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   devtool: 'source-map',
@@ -25,7 +26,8 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
+    loaders: [
+    {
       test: /\.js?$/,
       exclude: /(node_modules|bower_components)/,
       loader: 'babel', // 'babel-loader' is also a legal name to reference
@@ -36,7 +38,28 @@ module.exports = {
     },
     {
       test: /\.css$/,
-      loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+      include: [
+        path.join(__dirname, 'app/styles')
+      ],
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+    },
+    {
+      test: /\.css$/,
+      exclude: [
+        path.join(__dirname, 'app/styles')
+      ],
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+    },
+    {
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+    },
+    {
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'file-loader'
     }]
-  }
+  },
+  plugins: [
+      new ExtractTextPlugin('app.css')
+    ]
 };

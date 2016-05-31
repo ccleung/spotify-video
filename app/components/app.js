@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import SelectedYouTubePlayer from '../containers/selected-youtube-player'
 import SelectablePlaylist from '../containers/selectable-playlist'
 import styles from '../styles/app.css'
+import {Icon} from 'react-fa'
 
 export default class App extends React.Component {
   componentDidMount() {
@@ -14,6 +15,9 @@ export default class App extends React.Component {
       <div className={styles.app}>
         <nav className={styles.navContainer}>
           <a className={styles.button} href="#" onClick={() => this.props.onLogoutClicked()}>Logout</a>
+          <div><Icon spin name="spinner" /></div>
+          <Icon spin name="spinner" />
+          <Icon spin name="spinner" />
         </nav>
         <div className={styles.appContentContainer}>
           <SelectedYouTubePlayer />
