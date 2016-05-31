@@ -18,13 +18,22 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(fetchVideoId(id, searchQuery))
     },
     onPlaylistScroll: (event, dom) => {
-      console.log(dom.scrollHeight);
-      if(dom.scrollTop + dom.offsetHeight >= dom.scrollHeight - BUFFER_HEIGHT) {
+      let isScrollingDown = IsScrollingDown(dom.scrollTop);
+      if(isScrollingDown && (dom.scrollTop + dom.offsetHeight >= dom.scrollHeight - BUFFER_HEIGHT)) {
         dispatch(fetchPlaylist());
       }
     } 
   }
 }
+
+const IsScrollingDown = (() => {
+  var prevScroll = 0;
+  return (closureScrollTop) => {
+    let scrollingDown = !!(closureScrollTop > prevScroll);
+    prevScroll = closureScrollTop;
+    return scrollingDown;
+  };
+})();
 
 const SelectablePlayList = connect(
   mapStateToProps,
