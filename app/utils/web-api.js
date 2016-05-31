@@ -21,9 +21,10 @@ export const getYouTubeVideoID = (query) => {
   });
 }
 
-export const getPlaylist = () => {
+export const getPlaylist = (offset) => {
   var params = {
     limit: 20,
+    offset: offset,
     access_token: Auth.getToken()
   }
 

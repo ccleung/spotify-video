@@ -10,8 +10,12 @@ export const playTrack = (id) => {
 }
 
 export const fetchPlaylist = () => {
-  return (dispatch) => {
-    return getPlaylist().success((data) => {
+  return (dispatch, getState) => {
+    let state = getState();
+    // offset is always the total number of tracks we have currently
+    // set offset to get new records
+    var offset = state.tracks.result.tracks.length;
+    return getPlaylist(offset).success((data) => {
       var normalizedData = normalize(data, {
         tracks: arrayOf(track)
       });

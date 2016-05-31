@@ -4,6 +4,10 @@
   overflow-y: scroll;
 }
 
+.spinnerContainer {
+  text-align: center;
+}
+
 /* for some reason iphone prefers max-device-width */
 @media only screen and (max-device-width: 768px) {
   .container {

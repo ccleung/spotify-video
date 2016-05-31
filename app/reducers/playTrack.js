@@ -36,7 +36,11 @@ const tracks = (state = emptyTracks, action) => {
       normalizedTracks.entities.tracks[action.trackId].videoId = action.videoId;
       return normalizedTracks;
     case 'RECEIVE_PLAYLIST':
-      return action.playlist;
+      var currentPlaylist = Object.assign({}, state);
+      // spread/splat to concat
+      currentPlaylist.result.tracks.push(...action.playlist.result.tracks);
+      currentPlaylist.entities.tracks = Object.assign({}, currentPlaylist.entities.tracks,  action.playlist.entities.tracks);
+      return currentPlaylist;
     case 'LOGOUT':
       return emptyTracks;
     default:

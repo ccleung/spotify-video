@@ -1,6 +1,7 @@
 import React from 'react';
-import Track from './track'
-import styles from '../styles/playlist.css'
+import Track from './track';
+import styles from '../styles/playlist.css';
+import {Icon} from 'react-fa';
 
 export default class Playlist extends React.Component {
   render() {
@@ -19,8 +20,11 @@ export default class Playlist extends React.Component {
       )
     });
     return (
-      <div className={styles.container}>
+      <div className={styles.container} onScroll={(e) => this.props.onPlaylistScroll(e, React.findDOMNode(this)) }>
         {trackNodes}
+        <div className={styles.spinnerContainer}>
+          <Icon spin name="spinner" size="3x" />
+        </div>
       </div>
     );
   }

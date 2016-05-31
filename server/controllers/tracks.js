@@ -17,6 +17,7 @@ const parseYoutubeSearchResults = (data) => {
 exports.all = function(req, res) {
   var accessToken = req.query.access_token;
   var limit = req.query.limit || 20;
+  var offset = req.query.offset || 0;
 
   if (!accessToken) {
     return res.status(401).json({error: 'Login required.'});
@@ -25,7 +26,7 @@ exports.all = function(req, res) {
   var options = {
     url: 'https://api.spotify.com/v1/me/tracks',
     headers: { 'Authorization': 'Bearer ' + accessToken },
-    qs: { limit: limit },
+    qs: { limit: limit, offset: offset },
     json: true
   };
 
