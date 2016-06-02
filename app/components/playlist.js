@@ -19,12 +19,19 @@ export default class Playlist extends React.Component {
                onClick={() => this.props.onTrackClick(track.id, track.name + ' ' + track.artists[0].name)} />
       )
     });
+
+    var showSpinner = this.props.fetchingTracks;
+    var spinner = null;
+    if (showSpinner) {
+      spinner = (<div className={styles.spinnerContainer}>
+                  <Icon spin name="spinner" size="3x" />
+                 </div>)
+    }
+
     return (
       <div className={styles.container} onScroll={(e) => this.props.onPlaylistScroll(e, React.findDOMNode(this)) }>
         {trackNodes}
-        <div className={styles.spinnerContainer}>
-          <Icon spin name="spinner" size="3x" />
-        </div>
+        {spinner}
       </div>
     );
   }
@@ -40,3 +47,4 @@ export default class Playlist extends React.Component {
 Playlist.propTypes = { onTrackClick: React.PropTypes.func.isRequired }
 Playlist.propTypes = { tracks: React.PropTypes.array.isRequired }
 Playlist.propTypes = { selectedTrackId: React.PropTypes.string.isRequired }
+Playlist.propTypes = { fetchingTracks: React.PropTypes.bool.isRequired }

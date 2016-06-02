@@ -11,6 +11,9 @@ export const playTrack = (id) => {
 
 export const fetchPlaylist = () => {
   return (dispatch, getState) => {
+    // update UI to reflect fetching tracks
+    dispatch(fetchingTracks());
+
     let state = getState();
     // offset is always the total number of tracks we have currently
     // set offset to get new records
@@ -44,6 +47,12 @@ export const receivedVideoId = (trackId, data) => {
     type: 'RECEIVE_VIDEO_ID',
     videoId: data.videoId,
     trackId: trackId
+  }
+}
+
+export const fetchingTracks = () => {
+  return {
+    type: 'FETCHING_TRACKS'
   }
 }
 

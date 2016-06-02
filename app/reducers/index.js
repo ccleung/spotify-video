@@ -10,9 +10,21 @@ const selectedTrackId = (state = '', action) => {
   }
 }
 
+const fetchingTracks = (state = false, action) => {
+  switch(action.type) {
+    case 'FETCHING_TRACKS':
+      return true;
+    case 'RECEIVE_PLAYLIST':
+      return false;
+    default:
+      return state;
+  }
+}
+
 const spotifyVideoReducers = combineReducers({
   tracks,
-  selectedTrackId
+  selectedTrackId,
+  fetchingTracks
 })
 
 export default spotifyVideoReducers

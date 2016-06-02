@@ -8,7 +8,8 @@ const BUFFER_HEIGHT = 1;
 const mapStateToProps = (state) => {
   return {
     tracks: state.tracks,
-    selectedTrackId: state.selectedTrackId
+    selectedTrackId: state.selectedTrackId,
+    fetchingTracks: state.fetchingTracks
   }
 }
 
